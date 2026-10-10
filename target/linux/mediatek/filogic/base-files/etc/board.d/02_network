@@ -78,6 +78,7 @@ mediatek_setup_interfaces()
 	unielec,u7981-01*|\
 	zbtlink,zbt-z8102ax|\
 	nradio,c8-668gl|\
+	nradio,wt9108|\
 	zyxel,ex5601-t0-stock|\
 	zyxel,ex5601-t0-ubootmod)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4" eth1
@@ -238,7 +239,8 @@ mediatek_setup_macs()
 		lan_mac=$(mtd_get_mac_ascii u-boot-env mac)
 		label_mac=$lan_mac
 		;;
-	nradio,c8-668gl)
+	nradio,c8-668gl|\
+	nradio,wt9108)
 		lan_mac=$(mmc_get_mac_ascii bdinfo "fac_mac ")
 		wan_mac=$(macaddr_add "$lan_mac" 2)
 		label_mac=$lan_mac

@@ -1793,6 +1793,19 @@ define Device/nradio_c8-668gl
 endef
 TARGET_DEVICES += nradio_c8-668gl
 
+define Device/nradio_wt9108
+  DEVICE_VENDOR := NRadio
+  DEVICE_MODEL := WT9108
+  DEVICE_DTS := mt7981b-nradio-wt9108
+  DEVICE_DTS_DIR := ../dts
+  DEVICE_PACKAGES :=  \
+	kmod-usb-serial-option kmod-usb-net-cdc-ether kmod-usb-net-qmi-wwan \
+	kmod-usb3 automount
+  IMAGE_SIZE := 131072k
+  IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata | check-size
+endef
+TARGET_DEVICES += nradio_wt9108
+
 define Device/openembed_som7981
   DEVICE_VENDOR := OpenEmbed
   DEVICE_MODEL := SOM7981

@@ -173,7 +173,8 @@ platform_do_upgrade() {
 		CI_UBIPART="ubi0"
 		nand_do_upgrade "$1"
 		;;
-	nradio,c8-668gl)
+	nradio,c8-668gl|\
+	nradio,wt9108)
 		CI_DATAPART="rootfs_data"
 		CI_KERNPART="kernel_2nd"
 		CI_ROOTPART="rootfs_2nd"
@@ -235,7 +236,8 @@ platform_check_image() {
 		}
 		return 0
 		;;
-	nradio,c8-668gl)
+	nradio,c8-668gl|\
+	nradio,wt9108)
 		# tar magic `ustar`
 		magic="$(dd if="$1" bs=1 skip=257 count=5 2>/dev/null)"
 
@@ -273,6 +275,7 @@ platform_copy_config() {
 	jdcloud,re-cp-03|\
 	sl,3000-emmc|\
 	nradio,c8-668gl|\
+	nradio,wt9108|\
 	bt,r320|\
 	bt,rb300|\
 	sn,r1|\
